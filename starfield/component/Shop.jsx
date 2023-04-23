@@ -2,6 +2,7 @@ import { useContract, useNFTs } from "@thirdweb-dev/react";
 import React from "react";
 import ShopItem from "./ShopItem";
 import { SHIPS_ADDRESS } from "../const/contractAddress";
+import styles from "../src/styles/Home.module.css";
 
 /**
  * This component shows the:
@@ -12,9 +13,8 @@ export default function Shop() {
   const { data: availableShips } = useNFTs(shipContract);
    // console.log(availableShips);
   return (
-    // <div>ss</div>
     <>
-      <div>
+      <div className={styles.nftBoxGrid}>
         {availableShips?.map((p) => (
           <ShopItem
             shipContract={shipContract}

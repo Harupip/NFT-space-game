@@ -6,20 +6,12 @@ import React from "react";
 import { CHARACTER_ADDRESS } from "../const/contractAddress";
 import { Link, Routes, Route } from "react-router-dom";
 import MintContainer from "../component/MintContainer";
-import Rewards from "../component/Rewards";
-import OwnedGear from "../component/OwnedGear";
-import Shop from "../component/Shop";
 import HomeShop from "./Home";
-import CurrentGear from "../component/CurrentGear";
 import config from "./space/config";
-import LoadingSection from "../component/LoadingSection";
-
 
 export default function Home() {
   const address = useAddress();
-  // const router = useRoutes([
-  //   { path: "/play", element: <AppGame />}
-  // ]);
+  
   const { contract } = useContract(CHARACTER_ADDRESS);
   const { data: ownedNFTs, isLoading, error } = useOwnedNFTs(
     contract,
@@ -27,18 +19,36 @@ export default function Home() {
   );
 
   function addCanva() {
+    const playBtn = document.getElementById("playBtn");
+  const shopBtn = document.getElementById("shopBtn");
+    playBtn.hidden = true;
+    shopBtn.hidden = false;
+    delTag2();
     var addCanva = document.createElement("canvas");
     var bodyElement = document.getElementById("body");
     bodyElement.appendChild(addCanva);
   }
   
   function delTag() {
+    const playBtn = document.getElementById("playBtn");
+  const shopBtn = document.getElementById("shopBtn");
+    delTag2();
+    shopBtn.hidden = true;
+    playBtn.hidden = false;
     const list = document.getElementById("roott");
     while(list.hasChildNodes()){
     list.removeChild(list.firstChild);
     }
     const canvasList = document.getElementsByTagName("canvas")[0];
     canvasList.remove();
+  }
+
+  function delTag2() {
+    const list = document.getElementById("waitingPage");
+    while(list.hasChildNodes()){
+    list.removeChild(list.firstChild);
+    }
+    
   }
 
   function setLocal() {
@@ -99,12 +109,29 @@ export default function Home() {
     <div>
       <div className="first_line">
       <Link to="/game" className="nav-link">
-        <button onClick={addCanva.bind()}>Dash </button>
+        <button id="playBtn" onClick={addCanva.bind()}>Play </button>
       </Link>
       <Link to="/shop" className="nav-link">
-       <button onClick={delTag.bind()}>Dash </button>
+       <button id="shopBtn" onClick={delTag.bind()}>Shop </button>
       </Link>
       <div className="address">{address}</div>
+    </div>
+
+    <div id="waitingPage">
+    <div id="firstPage">
+      <div className="containerFirstPage">
+      <Link to="/game" className="nav-link">
+        <button className="button-64" onClick={addCanva.bind()}>
+        <span className="text">Play</span>
+           </button>
+      </Link>
+      <Link to="/shop" className="nav-link">
+       <button className="button-64" onClick={delTag.bind()}> 
+       <span className="text">Shop</span>
+        </button>
+      </Link>
+      </div>
+    </div>
     </div>
     <Routes>
           <Route path="/shop" element={<HomeShop />} />

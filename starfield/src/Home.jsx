@@ -39,12 +39,14 @@ import CurrentGear from "../component/CurrentGear";
 
 
       return (
-        <div className={styles.container}>
+        <div className={styles.container} >
           { SpaceContract &&
           CharacterContract &&
           tokenContract &&
           ShipContract ? (
-            <div className={styles.mainSection}>
+            <div className={styles.mainSection} style={{
+              marginTop:"20px"
+            }}>
               <CurrentGear />
               <Rewards />
             </div>
