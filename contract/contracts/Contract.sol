@@ -50,7 +50,7 @@ contract Space is ReentrancyGuard, ERC1155Holder {
                 return 0;
             }
 
-            uint256 rewards = playerScores[_player].value * 10_000_000_000 * (playerShip[_player].value + 1);
+            uint256 rewards = playerScores[_player].value * 10_000_000_000_000 * (playerShip[_player].value + 1);
 
             return rewards;
         }
@@ -75,7 +75,7 @@ contract Space is ReentrancyGuard, ERC1155Holder {
         playerLastUpdate[msg.sender].value = block.timestamp;
     }
 
-    function stakeScore(uint256 _tokenId) external nonReentrant {
+    function stakeScore(uint256 _tokenId, uint256 score) external nonReentrant {
         require(shipNftCollection.balanceOf(msg.sender, _tokenId) >= 1, "You must have at least 1 ship");
 
         if (playerShip[msg.sender].isData) {
@@ -91,10 +91,10 @@ contract Space is ReentrancyGuard, ERC1155Holder {
         playerShip[msg.sender].isData = true;
 
         playerScores[msg.sender].isData = true;
-        playerScores[msg.sender].value = 0;
+        playerScores[msg.sender].value = score;
     }
 
-    function withdrawScore() external nonReentrant {
+    function withdrawScore(uint256 score) external nonReentrant {
         require(playerShip[msg.sender].isData, "You must have at least 1 ship");
 
         uint256 reward = calculateRewardsScore(msg.sender);
@@ -105,7 +105,7 @@ contract Space is ReentrancyGuard, ERC1155Holder {
         playerShip[msg.sender].isData = false;
 
         playerScores[msg.sender].isData = true;
-        playerScores[msg.sender].value = 0;
+        playerScores[msg.sender].value = score;
 
     }
 
@@ -132,7 +132,8 @@ contract Space is ReentrancyGuard, ERC1155Holder {
         playerLastUpdate[msg.sender].value = block.timestamp;
     }
 
-    function claimScore() external nonReentrant {
+    function claimScore(uint256 score) external nonReentrant {
+	    playerScores[msg.sender].value = score;
         uint256 reward = calculateRewardsScore(msg.sender);
         rewardsToken.transfer(msg.sender, reward);
 

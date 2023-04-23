@@ -26,7 +26,7 @@ export default function MintContainer() {
         <Web3Button
           colorMode="dark"
           contractAddress= {CHARACTER_ADDRESS}
-          action={(contract) => contract.erc1155.claim(0, 1)}
+          action={(contract) => contract.erc1155.claim(1, 1)}
         >
           Claim
         </Web3Button>

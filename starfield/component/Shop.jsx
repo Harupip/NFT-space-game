@@ -19,7 +19,7 @@ export default function Shop() {
           <ShopItem
             shipContract={shipContract}
             item={p}
-            key={p.metadata.id.toString()}
+            key={p.metadata.id}
           />
         ))}
       </div>

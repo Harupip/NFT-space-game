@@ -4,6 +4,7 @@ import App from "./App";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.css";
 import AppGame from "./space/AppGame.js";
+import { BrowserRouter } from 'react-router-dom'
 
 // This is the chain your dApp will work on.
 // Change this to the chain your app is built for.
@@ -15,7 +16,9 @@ const root = createRoot(container);
 root.render(
   
     <ThirdwebProvider activeChain={activeChain}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThirdwebProvider>
   
 );

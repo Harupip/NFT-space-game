@@ -172,16 +172,21 @@ export class GameUI {
       text: 'Your Best: 0',
     })
 
-    this.DOM.GAMEOVER_SHARE_TWITTER = addDomNode(
-      addDomNode(content, {
-        tag: 'div',
-      }),
-      {
-        className: 'share-twitter',
-        tag: 'a',
-        text: 'Tweet now',
-      },
-    )
+    this.DOM.GAMEOVER_CLAIM = addDomNode(content, {
+      className: 'score best',
+      tag: 'p',
+      text: 'Unclaimed: 0',
+    })
+    // this.DOM.GAMEOVER_SHARE_TWITTER = addDomNode(
+    //   addDomNode(content, {
+    //     tag: 'div',
+    //   }),
+    //   {
+    //     className: 'share-twitter',
+    //     tag: 'a',
+    //     text: 'Tweet now',
+    //   },
+    // )
 
     this.DOM.GAMEOVER_RESTART = addDomNode(
       addDomNode(content, {
@@ -194,28 +199,20 @@ export class GameUI {
       },
     )
 
-    this.DOM.GAMEOVER_SHARE_TWITTER.target = '_blank'
+    // this.DOM.GAMEOVER_SHARE_TWITTER.target = '_blank'
 
     root.appendChild(el)
   }
 
-  showGameOver({level, score, best, is_new_record}) {
+  showGameOver({level, score, best, is_new_record, coin}) {
     this.DOM.GAMEOVER_TITLE.textContent = is_new_record
       ? 'New Record!'
       : 'Game Over'
     this.DOM.GAMEOVER_SCORE.textContent = `Your score: ${score}`
     this.DOM.GAMEOVER_BEST.textContent = `Your Best: ${best}`
     console.log(score);
-
-
-    this.DOM.GAMEOVER_SHARE_TWITTER.href =
-      'https://twitter.com/intent/tweet?text=' +
-      encodeURIComponent(
-        `Spacecraft ${level}/${score}${
-          is_new_record ? '\r\nNew Record!' : ''
-        }\r\nhttps://spacecraft.vercel.app/`,
-      )
-
+    console.log(coin);
+    this.DOM.GAMEOVER_CLAIM.textContent = `Unclaimed: ${coin / 100000}`
     this.DOM.gameOver.classList.toggle('success', is_new_record)
     this.DOM.gameOver.classList.remove('hidden')
   }

@@ -4,6 +4,7 @@ const config = {
   thunderTimeGap: 10000,
   firstAvailableThunderAt: 2000,
   bulletCpacity: 8,
+  coin: 0,
 }
 
 export default config

@@ -13,28 +13,28 @@ import {
   const { contract:shipContract } = useContract(SHIPS_ADDRESS);
     const { data: claimCondition } = useActiveClaimCondition(
       shipContract,
+      item.item.metadata.id
     );
-
     return (
-      <div key={item.item.metadata.id}>
+      <div id="shopShip" key={item.item.metadata.id} name={item.item.metadata.id}>
         <ThirdwebNftMedia
           metadata={item.item.metadata}
-          height={ 30 }
+          height={ 64 }
         />
         <h3>{item.item.metadata.name}</h3>
         <p>
           Price:{" "}
           <b>
             {claimCondition && ethers.utils.formatUnits(claimCondition?.price)}{" "}
-            GEM
+            SPACE
           </b>
         </p>
-  
+        
         <div>
           <Web3Button
             colorMode="dark"
             contractAddress={SHIPS_ADDRESS}
-            action={(contract) => contract.erc1155.claim(0, 1)}
+            action={(contract) => contract.erc1155.claim(id, 1)}
             onSuccess={() => alert("Purchased!")}
             onError={(error) => alert(error)}
           >

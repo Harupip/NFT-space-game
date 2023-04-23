@@ -73,7 +73,7 @@ export default class Game {
       }
     })
 
-    this.ui.DOM.GAMEOVER_RESTART.addEventListener('click', e => {
+    this.ui.DOM.GAMEOVER_RESTART.addEventListener('keydown', e => {
       this.start()
     })
 
@@ -124,11 +124,13 @@ export default class Game {
     this.enemy.stop()
     this.enemy.removeAll()
     console.log(this.player.score)
+    localStorage.setItem(config.coin, this.player.score + parseInt(localStorage.getItem(config.coin)))
     this.ui.showGameOver({
       score: this.player.score,
       level: this.player.level,
       is_new_record: this.player.best < this.player.score,
       best: localStorage.getItem(config.BEST_SCORE) || 0,
+      coin: localStorage.getItem(config.coin) || 0,
     })
 
     this.player.fighter.bullets.forEach(bullet => bullet.destroy())

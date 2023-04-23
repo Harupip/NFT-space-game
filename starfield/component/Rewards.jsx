@@ -11,6 +11,7 @@ import {
 import { ethers } from "ethers";
 import { Space_ADDRESS, SPACES_ADDRESS } from "../const/contractAddress";
 import AppGame from "../src/space/AppGame";
+import config from "../src/space/config";
 
 /**
  * This component shows the:
@@ -30,9 +31,14 @@ export default function Rewards() {
   //console.log(data);
   const { data: unclaimedAmount } = useContractRead(
     spaceContract,
-    "calculateRewardsTime",
-    address
+    "calculateRewardsScore",
+    address,
   );
+  var coin1 = localStorage.getItem(config.coin);
+  var unclaimedCoin = coin1 / 100000;
+  function setCoin() {
+    localStorage.setItem(config.coin, 0);
+  }
   return (
     
     <div
@@ -50,16 +56,16 @@ export default function Rewards() {
       </p>
       <p>
         Unclaimed:{" "}
-        <b>{unclaimedAmount && ethers.utils.formatUnits(unclaimedAmount)}</b>
+        {/* <b>{unclaimedAmount && ethers.utils.formatUnits(unclaimedAmount)}</b> */}
+        <b>{unclaimedCoin}</b>
       </p>
       <div>
         <Web3Button
           contractAddress={Space_ADDRESS}
-          action={(contract) => contract.call("claimTime")}
+          action={(contract) => {contract.call("claimScore", coin1), setCoin(), console.log(coin1)}}
         >
           Claim
         </Web3Button>
-        <button onClick={() => console.log(document.getElementsByClassName("score")[0].innerHTML)}></button>
       </div>
     </div>
   );

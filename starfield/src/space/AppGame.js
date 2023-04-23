@@ -5,7 +5,7 @@ import { GameUI } from './Game/GameUI';
 
 export default function AppGame() {
   
-  const root = document.getElementById('root')
+  const root = document.getElementById('roott')
   window.root = root
   
   const fighter = new Fighter()

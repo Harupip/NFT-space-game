@@ -54,7 +54,7 @@ import { SHIPS_ADDRESS, Space_ADDRESS } from "../const/contractAddress";
             <div key={p.metadata.id.toString()}>
               <ThirdwebNftMedia
                 metadata={p.metadata}
-                height={"64"}
+                height={64}
               />
               <h3>{p.metadata.name}</h3>
   
