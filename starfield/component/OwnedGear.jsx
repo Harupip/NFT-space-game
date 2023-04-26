@@ -7,7 +7,7 @@ import {
   } from "@thirdweb-dev/react";
 import React from "react";
 import { SHIPS_ADDRESS, Space_ADDRESS } from "../const/contractAddress";
-  
+import styles from "../src/styles/Home.module.css";
   /**
    * This component shows the:
    * - ships the connected wallet has
@@ -49,16 +49,21 @@ import { SHIPS_ADDRESS, Space_ADDRESS } from "../const/contractAddress";
   
     return (
       <>
-        <div >
+        <div className={styles.nftBoxGrid}>
           {ownedShips?.map((p) => (
-            <div key={p.metadata.id.toString()}>
+            <div  className={styles.nftBox} key={p.metadata.id.toString()}>
               <ThirdwebNftMedia
+                className={`${styles.nftMedia} ${styles.spacerTop}`}
                 metadata={p.metadata}
                 height={64}
+                width="100%"
               />
-              <h3>{p.metadata.name}</h3>
+              <h3 style={{
+
+                marginLeft: "10px"
+              }}>{p.metadata.name}</h3>
   
-              <div >
+              <div className={styles.smallMargin}>
                 <Web3Button
                   colorMode="dark"
                   contractAddress={Space_ADDRESS}
