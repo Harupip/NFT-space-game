@@ -49,11 +49,10 @@ export default class Fighter {
     let el;
     if (parseInt(localStorage.getItem(config.checkShip)) == 1) {
        el = createDomNode('player2')
-    } 
-      if (parseInt(localStorage.getItem(config.checkShip)) == 2) {
+    } else if (parseInt(localStorage.getItem(config.checkShip)) == 2) {
       el = createDomNode('player3')
     } else {
-      el = createDomNode('player3')
+      el = createDomNode('player')
     }
     const template = document.createDocumentFragment()
     addDomNode(template, {className: 'body'})
