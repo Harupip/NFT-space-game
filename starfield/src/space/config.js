@@ -5,6 +5,7 @@ const config = {
   firstAvailableThunderAt: 2000,
   bulletCpacity: 8,
   coin: 0,
+  checkShip: -1,
 }
 
 export default config

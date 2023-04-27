@@ -8,6 +8,7 @@ import {
   rand,
   styleObjectToCssText,
 } from './utils'
+import config from './config'
 
 export default class Fighter {
   constructor() {
@@ -45,7 +46,15 @@ export default class Fighter {
   }
 
   createElement() {
-    const el = createDomNode('player')
+    let el;
+    if (parseInt(localStorage.getItem(config.checkShip)) == 1) {
+       el = createDomNode('player2')
+    } 
+      if (parseInt(localStorage.getItem(config.checkShip)) == 2) {
+      el = createDomNode('player3')
+    } else {
+      el = createDomNode('player3')
+    }
     const template = document.createDocumentFragment()
     addDomNode(template, {className: 'body'})
     addDomNode(template, {className: 'head'})

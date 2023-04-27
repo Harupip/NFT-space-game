@@ -41,7 +41,7 @@ import {
           <Web3Button
             colorMode="dark"
             contractAddress={SHIPS_ADDRESS}
-            action={(contract) => contract.erc1155.claim(0, 1)}
+            action={(contract) => contract.erc1155.claim(item.item.metadata.id, 1)}
             onSuccess={() => alert("Purchased!")}
             onError={(error) => alert(error)}
           >

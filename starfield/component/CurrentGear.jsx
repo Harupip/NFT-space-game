@@ -2,7 +2,8 @@ import { ThirdwebNftMedia, useAddress, useContract, useNFT, useNFTs } from "@thi
 import React, { useEffect, useState } from "react";
 import styles from "../src/styles/Home.module.css";
 import { CHARACTER_ADDRESS, SHIPS_ADDRESS, Space_ADDRESS } from "../const/contractAddress";
-
+import { concat } from "ethers/lib/utils";
+import config from "../src/space/config";
 
 /**
  * This component shows the:
@@ -32,7 +33,11 @@ export default function CurrentGear() {
       if (p.isData) {
         const ShipMetadata = await shipContract.get(p.value);
         setShip(ShipMetadata);
-        console.log(ShipMetadata);
+        console.log(ShipMetadata.metadata.id);
+        console.log();
+        if (ShipMetadata.metadata.id > -1) {
+          localStorage.setItem(config.checkShip, ShipMetadata.metadata.id);
+        }
       }
     })();
   }, [address, spaceContract, shipContract]);
@@ -73,8 +78,6 @@ export default function CurrentGear() {
           marginTop: 24,
         }}
       >
-       
-   
       </div>
     </div>
   );

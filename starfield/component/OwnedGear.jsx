@@ -59,7 +59,6 @@ import styles from "../src/styles/Home.module.css";
                 width="100%"
               />
               <h3 style={{
-
                 marginLeft: "10px"
               }}>{p.metadata.name}</h3>
   

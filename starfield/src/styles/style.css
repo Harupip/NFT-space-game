@@ -621,3 +621,504 @@ button.restart:focus {
     min-width: 196px;
   }
 }
+
+.player2 {
+  position: fixed;
+  width: 80px;
+  height: 75px;
+  z-index: 9;
+}
+
+.player2 .body {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 44px;
+  height: 58px;
+  background: rgb(138,145,158);
+  transform: translate(-50%, 0);
+  border-radius: 100% 100% 8px 8px;
+  z-index: 2;
+}
+
+.player2 .overlay::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  width: 44px;
+  height: 23px;
+  transform: translate(-50%, 0);
+  border-radius: 0 0 8px 8px;
+  background: #fff;
+  z-index: 9;
+}
+
+.player2 .overlay::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  width: 28px;
+  height: 6px;
+  transform: translate(-50%, 0);
+  border-radius: 0 0 2px 2px;
+  background: #888;
+  z-index: 7;
+}
+
+.player2 .fins {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  top: 40px;
+  height: 24px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.player2 .fins::after,
+.player2 .fins::before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  right: 100%;
+  width: 25px;
+  height: 20px;
+  transform: skewY(10deg);
+  transform-origin: top right;
+  background: rgb(255,77,23);
+}
+
+.player2 .fins::after {
+  right: auto;
+  left: 100%;
+  transform-origin: top left;
+  transform: skewY(-10deg);
+}
+
+.player2 .fins2 {
+  position: absolute;
+  width: 24px;
+  top: 56px;
+  height: 24px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: -8;
+}
+.player2 .fins2::after,
+.player2 .fins2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 29px;
+  height: 12px;
+  transform: skewY(22deg);
+  transform-origin: top right;
+  background: #b8b9be;
+  z-index: -8;
+}
+
+.player2 .fins2::after {
+  right: auto;
+  left: 100%;
+  transform-origin: top left;
+  transform: skewY(-22deg);
+}
+
+.player2 .head {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 20px;
+  height: 50px;
+  height: 60px;
+  transform: translate(-50%, 0);
+  border-radius: 50% 50% 0 0;
+  background: #e2e2e2;
+  box-shadow: 0 4px 0 6px #1e1a20;
+  z-index: 3;
+}
+
+.player2 .glass {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 10px;
+  background: rgb(245,135,135);
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #c3c3c3;
+  z-index: 9;
+}
+
+.player2 .guns {
+  position: absolute;
+  top: 34px;
+  width: 64px;
+  left: 50%;
+  transform: translate(-50%, -1px);
+  z-index: -1;
+}
+
+.player2 .guns::after,
+.player2 .guns::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 10px;
+  box-shadow: 0 0 10px 1px rgba(20, 149, 255, 0.3);
+  background: rgb(255, 255, 255);
+  border-radius: 10px 10px 0 0;
+  transform: rotate(8deg);
+}
+
+.player2 .guns::after {
+  left: auto;
+  right: 0;
+  transform: rotate(-8deg);
+}
+
+.player2 .fire {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 22px;
+  height: 30px;
+  transform: translate(-50%, 0);
+}
+
+.player2 .fire::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 8px;
+  height: 40px;
+  transform: translate3d(-50%, -30px, 0px) scaleX(0.6);
+  border-radius: 100%;
+  background: rgba(14, 255, 255, 0.692);
+  animation: blueFire 2s infinite;
+  box-shadow: 0 24px 14px 3px rgb(17, 73, 255);
+  z-index: -1;
+}
+
+.player2 .fuel {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  height: 4px;
+  width: 30px;
+  border-radius: 1px;
+  border: 2px solid #ddd;
+  background: #ddd;
+  transform: translate(-50%, 0);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.player2 .fuel span {
+  flex-grow: 1;
+  background: #fff;
+  height: 100%;
+}
+
+.player2 .fuel span.active {
+  background: #ff2929;
+  border-radius: 1px;
+}
+
+.player2 .fire::after {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 8px;
+  height: 20px;
+  transform: translate3d(-50%, -9px, 0px);
+  border-radius: 100%;
+  background: rgb(255, 200, 72);
+  box-shadow: 0 6px 10px 3px rgb(255, 184, 32), 0 6px 20px 3px rgb(255, 77, 23);
+  z-index: -1;
+}
+
+.player2 .fire span {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: rgb(255, 77, 23);
+  box-shadow: 0 6px 8px 3px rgb(255, 184, 32), 0 6px 20px 4px rgb(255, 77, 23);
+  border-radius: 100%;
+  opacity: 0;
+  transform: scale(0);
+  animation: fire 2s infinite;
+}
+
+@keyframes fire {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -10px, 0px) scale(0.1);
+  }
+  10% {
+    opacity: 1;
+    transform: translate3d(-50%, -10px, 0px) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-50%, -3px, 0px);
+    opacity: 0;
+  }
+}
+
+
+
+.player3 {
+    position: fixed;
+    width: 80px;
+    height: 75px;
+    z-index: 9;
+  }
+  
+  .player3 .body {
+    position: absolute;
+    left: 50%;
+    top: 9px;
+    width: 44px;
+    height: 58px;
+    background: rgb(71 193 193);
+    transform: translate(-50%, 0);
+    border-radius: 100% 100% 8px 8px;
+    z-index: 2;
+  }
+  
+  .player3 .overlay::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 48px;
+    width: 44px;
+    height: 23px;
+    transform: translate(-50%, 0);
+    border-radius: 0 0 8px 8px;
+    background: rgb(20 255 233);
+    z-index: 9;
+  }
+  
+  .player3 .overlay::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    width: 28px;
+    height: 6px;
+    transform: translate(-50%, 0);
+    border-radius: 0 0 2px 2px;
+    background: #888;
+    z-index: 7;
+  }
+  
+  .player3 .fins {
+    position: absolute;
+    z-index: 1;
+    width: 40px;
+    top: 40px;
+    height: 24px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  
+  .player3 .fins::after,
+  .player3 .fins::before {
+    content: '';
+    position: absolute;
+    top: 0%;
+    right: 100%;
+    width: 25px;
+    height: 20px;
+    transform: skewY(10deg);
+    transform-origin: top right;
+    background: rgb(19,255,255);
+  }
+  
+  .player3 .fins::after {
+    right: auto;
+    left: 100%;
+    transform-origin: top left;
+    transform: skewY(-10deg);
+  }
+  
+  .player3 .fins2 {
+    position: absolute;
+    width: 24px;
+    top: 56px;
+    height: 24px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -8;
+  }
+  .player3 .fins2::after,
+  .player3 .fins2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 29px;
+    height: 12px;
+    transform: skewY(22deg);
+    transform-origin: top right;
+    background: #b8b9be;
+    z-index: -8;
+  }
+  
+  .player3 .fins2::after {
+    right: auto;
+    left: 100%;
+    transform-origin: top left;
+    transform: skewY(-22deg);
+  }
+  
+  .player3 .head {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 20px;
+    height: 50px;
+    height: 60px;
+    transform: translate(-50%, 0);
+    border-radius: 50% 50% 0 0;
+    background: rgb(100 213 145);
+    box-shadow: 0 4px 0 6px #1e1a20;
+    z-index: 3;
+  }
+  
+  .player3 .glass {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 10px;
+    background: rgb(245,135,135);
+    border-radius: 8px 8px 0 0;
+    border: 1px solid #c3c3c3;
+    z-index: 9;
+  }
+  
+  .player3 .guns {
+    position: absolute;
+    top: 34px;
+    width: 64px;
+    left: 50%;
+    transform: translate(-50%, -1px);
+    z-index: -1;
+  }
+  
+  .player3 .guns::after,
+  .player3 .guns::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 10px;
+    box-shadow: 0 0 10px 1px rgba(20, 149, 255, 0.3);
+    background: rgb(255, 255, 255);
+    border-radius: 10px 10px 0 0;
+    transform: rotate(8deg);
+  }
+  
+  .player3 .guns::after {
+    left: auto;
+    right: 0;
+    transform: rotate(-8deg);
+  }
+  
+  .player3 .fire {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 22px;
+    height: 30px;
+    transform: translate(-50%, 0);
+  }
+  
+  .player3 .fire::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 8px;
+    height: 40px;
+    transform: translate3d(-50%, -30px, 0px) scaleX(0.6);
+    border-radius: 100%;
+    background: rgba(14, 255, 255, 0.692);
+    animation: blueFire 2s infinite;
+    box-shadow: 0 24px 14px 3px rgb(17, 73, 255);
+    z-index: -1;
+  }
+  
+  .player3 .fuel {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    height: 4px;
+    width: 30px;
+    border-radius: 1px;
+    border: 2px solid #ddd;
+    background: #ddd;
+    transform: translate(-50%, 0);
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+  
+  .player3 .fuel span {
+    flex-grow: 1;
+    background: #fff;
+    height: 100%;
+  }
+  
+  .player3 .fuel span.active {
+    background: #ff2929;
+    border-radius: 1px;
+  }
+  
+  .player3 .fire::after {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 8px;
+    height: 20px;
+    transform: translate3d(-50%, -9px, 0px);
+    border-radius: 100%;
+    background: rgb(255, 200, 72);
+    box-shadow: 0 6px 10px 3px rgb(255, 184, 32), 0 6px 20px 3px rgb(255, 77, 23);
+    z-index: -1;
+  }
+  
+  .player3 .fire span {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: rgb(255, 77, 23);
+    box-shadow: 0 6px 8px 3px rgb(255, 184, 32), 0 6px 20px 4px rgb(255, 77, 23);
+    border-radius: 100%;
+    opacity: 0;
+    transform: scale(0);
+    animation: fire 2s infinite;
+  }
+  

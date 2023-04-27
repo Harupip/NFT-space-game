@@ -125,7 +125,7 @@ export class GameUI {
     addDomNode(content, {
       className: 'title',
       tag: 'h1',
-      text: 'Spacecraft Journey',
+      text: 'Starfield',
     })
 
     addDomNode(content, {
